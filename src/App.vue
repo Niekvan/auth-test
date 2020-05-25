@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <splash-screen v-if="isLoading"></splash-screen>
+  <div v-else id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -7,6 +8,23 @@
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+import { mapState } from 'vuex';
+
+import SplashScreen from './views/SplashView.vue';
+
+export default Vue.extend({
+  name: 'SplashScreen',
+  components: {
+    'splash-screen': SplashScreen
+  },
+  computed: {
+    ...mapState(['isLoading'])
+  }
+});
+</script>
 
 <style>
 #app {

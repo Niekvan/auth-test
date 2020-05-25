@@ -1,0 +1,7 @@
+{
+  "userService": {
+    "url": "http://localhost:3000/user",
+    "name": "userService",
+    "shortName": "user"
+  }
+}
