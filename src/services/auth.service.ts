@@ -1,4 +1,9 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosError
+} from 'axios';
 import TokenStorage from './storage.service';
 import { Token, ApiConfig } from './types';
 
@@ -6,11 +11,17 @@ export class AuthService {
   public isLoggedIn = false;
   public initialized: Promise<void>;
   public _tokenStorage!: TokenStorage;
+
   private _api!: AxiosInstance;
-  private _token: Token | null = null;
   private _interceptorID!: number | null;
+  private _isRefreshing = false;
   private _onLogout!: Function;
+  private _queue: {
+    reject: (error: AxiosError | null) => void;
+    resolve: (token: string | null) => void;
+  }[] = [];
   private _resolveInitialized: (() => void) | undefined;
+  private _token: Token | null = null;
 
   constructor() {
     this.initialized = new Promise(
@@ -105,23 +116,41 @@ export class AuthService {
     if (error.response.status !== 401) {
       return Promise.reject(error);
     }
+
     if (error.config.url.includes('/o/token')) {
       this._onLogout();
+      await this.logout();
       return error;
-    } else {
-      try {
-        const response = await this._refreshAccessToken();
-        const token = response?.data;
-        this._setToken(token);
-        return await this.request({
+    }
+
+    if (this._isRefreshing) {
+      return new Promise((resolve, reject) => {
+        this._queue.push({ resolve, reject });
+      }).then(() => {
+        return this.request({
           method: error.config.method,
           url: error.config.url,
           data: error.config.data
         });
-      } catch (e) {
-        console.error(e);
-        return Promise.reject(new Error('Could not update accesstoken'));
-      }
+      });
+    }
+
+    try {
+      this._isRefreshing = true;
+      const response = await this._refreshAccessToken();
+      const token = response?.data;
+      this._setToken(token);
+      this._processQueue(null, token);
+      return await this.request({
+        method: error.config.method,
+        url: error.config.url,
+        data: error.config.data
+      });
+    } catch (e) {
+      this._processQueue(error, null);
+      return Promise.reject(new Error('Could not update accesstoken'));
+    } finally {
+      this._isRefreshing = false;
     }
   };
 
@@ -136,6 +165,16 @@ export class AuthService {
     if (this._interceptorID) {
       this._api.interceptors.response.eject(this._interceptorID);
     }
+  }
+
+  private _processQueue(error: AxiosError | null, token: string | null) {
+    this._queue.forEach(promise => {
+      if (error) {
+        promise.reject(error);
+      } else {
+        promise.resolve(token);
+      }
+    });
   }
 
   private _removeAllTokens() {

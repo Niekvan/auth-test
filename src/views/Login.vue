@@ -1,14 +1,24 @@
 <template>
-  <form @submit.prevent="sendForm">
-    <input type="text" v-model="user.email" name="password" id="email" />
-    <input
-      type="password"
-      v-model="user.password"
-      name="password"
-      id="password"
-    />
-    <button type="submit">Login</button>
-  </form>
+  <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <div class="box">
+        <form @submit.prevent="sendForm">
+          <b-field label="Email">
+            <b-input type="email" icon="account" v-model="user.email"></b-input>
+          </b-field>
+          <b-field label="password">
+            <b-input
+              type="password"
+              icon="form-textbox-password"
+              icon-right="lock-reset"
+              v-model="user.password"
+            ></b-input>
+          </b-field>
+          <b-button type="is-primary" native-type="submit">Login</b-button>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

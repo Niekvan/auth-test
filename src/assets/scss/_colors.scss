@@ -1,0 +1,9 @@
+$primary: #db620e;
+$primary-invert: findColorInvert($primary);
+
+$colors: (
+  'primary': (
+    $primary,
+    $primary-invert
+  )
+);

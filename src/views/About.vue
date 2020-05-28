@@ -1,11 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <button @click="getUser">Get me</button>
-    <button @click="logout">Logout</button>
-    <p :key="index" v-for="(value, key, index) in user">
-      {{ key }}: {{ value }}
-    </p>
+  <div class="container is-centered">
+    <div class="about box">
+      <h1>This is an about page</h1>
+      <b-button @click="getUser">Get me</b-button>
+      <b-button @click="logout">Logout</b-button>
+      <p :key="index" v-for="(value, key, index) in user">
+        {{ key }}: {{ value }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -21,6 +23,8 @@ export default Vue.extend({
     };
   },
   async created() {
+    this.getUser();
+    this.getUser();
     await this.getUser();
   },
   methods: {
