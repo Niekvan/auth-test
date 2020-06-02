@@ -5,7 +5,7 @@ import { actions } from './actions';
 import { state } from './state';
 import { mutations } from './mutations';
 
-import auth from './auth';
+import auth from '@/modules/user/store';
 
 Vue.use(Vuex);
 

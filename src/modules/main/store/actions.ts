@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ActionTree } from 'vuex';
 
-import apiService from '@/services/api.service';
+import ApiService from '@/services/api.service';
 import userService from '@/services/user.service';
 import { ApiConfig } from '@/services/types';
 
@@ -17,15 +17,34 @@ export const actions: ActionTree<State, any> = {
     const config: ApiConfig = {
       instance: apiConfig,
       onLogout: () => {
-        router.push({ name: 'Home' });
+        router.push({ name: 'Login' });
       }
     };
 
-    apiService.init(config);
+    ApiService.init(config);
 
     const { data: services } = await axios.get('/services.json');
 
     userService.init(services.userService);
+
+    await ApiService.initialized;
+
+    const isPublic = router.currentRoute.meta.public;
+
+    if (userService.isLoggedIn) {
+      try {
+        await userService.me();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    if (!isPublic && !userService.isLoggedIn) {
+      router.push({
+        name: 'Login',
+        query: { redirect: router.currentRoute.fullPath }
+      });
+    }
 
     commit(SET_LOADING, false);
   }

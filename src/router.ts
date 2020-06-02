@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 
-import Home from '../views/Home.vue';
+import HomeView from '@/modules/main/views/HomeView.vue';
 
 import ApiService from '@/services/api.service';
 
@@ -9,27 +9,37 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '',
     name: 'Home',
-    component: Home
+    redirect: '/dashboard',
+    component: HomeView,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '@/modules/overview/views/Dashboard.vue'
+          )
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '@/modules/user/views/About.vue'
+          )
+      }
+    ]
   },
   {
     path: '/login',
     name: 'Login',
     component: () =>
-      import(/* webpackChunckName: "login" */ '../views/Login.vue'),
+      import(/* webpackChunckName: "login" */ '@/modules/main/views/Login.vue'),
     meta: {
       public: true
     }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ];
 

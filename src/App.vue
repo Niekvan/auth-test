@@ -1,10 +1,6 @@
 <template>
   <splash-screen v-if="isLoading"></splash-screen>
   <div v-else id="app">
-    <div id="nav">
-      <router-link to="/" exact>Home</router-link> |
-      <router-link to="/about" exact>About</router-link>
-    </div>
     <router-view />
   </div>
 </template>
@@ -13,10 +9,9 @@
 import Vue from 'vue';
 import { mapState } from 'vuex';
 
-import SplashScreen from './views/SplashView.vue';
+import SplashScreen from '@/modules/main/views/SplashView.vue';
 
 export default Vue.extend({
-  name: 'SplashScreen',
   components: {
     'splash-screen': SplashScreen
   },
@@ -28,16 +23,4 @@ export default Vue.extend({
 
 <style lang="scss">
 @import './assets/scss/main.scss';
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

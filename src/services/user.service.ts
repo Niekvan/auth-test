@@ -5,6 +5,10 @@ class UserService {
   public initialized = false;
   private _config!: UserConfig;
 
+  public get isLoggedIn(): boolean {
+    return ApiService.isLoggedIn;
+  }
+
   public init(config: UserConfig) {
     this._config = config;
     this.initialized = true;

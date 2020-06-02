@@ -1,0 +1,39 @@
+@import '../colors';
+// COLOR OVERRIDES
+$primary: map-get($custom-colors, 'primary');
+$primary-invert: findColorInvert($primary);
+
+$primary-light: map-get($custom-colors, 'primary-light');
+$primary-light-invert: findColorInvert($primary-light);
+
+$primary-dark: map-get($custom-colors, 'primary-dark');
+$primary-dark-invert: findColorInvert($primary-dark);
+
+$primary-darker: map-get($custom-colors, 'primary-darker');
+$primary-darker-invert: findColorInvert($primary-darker);
+
+$secondary: map-get($custom-colors, 'secondary');
+$secondary-invert: findColorInvert($secondary);
+
+$secondary-dark: map-get($custom-colors, 'secondary-dark');
+$secondary-dark-invert: findColorInvert($secondary-dark);
+
+$info: map-get($custom-colors, 'info');
+$info-invert: findColorInvert($info);
+
+$success: map-get($custom-colors, 'success');
+$success-invert: findColorInvert($success);
+
+$warning: map-get($custom-colors, 'warning');
+$warning-invert: findColorInvert($warning);
+
+$danger: map-get($custom-colors, 'danger');
+$danger-invert: findColorInvert($danger);
+
+// SHADES
+$grey: map-get($custom-colors, 'canvas');
+$grey-dark: map-get($custom-colors, 'canvas-dark');
+
+// LINKS
+$link: $primary;
+$link-focus-border: $primary;

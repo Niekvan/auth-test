@@ -1,12 +1,16 @@
 <template>
   <div class="container is-centered">
     <div class="about box">
-      <h1>This is an about page</h1>
-      <b-button @click="getUser">Get me</b-button>
-      <b-button @click="logout">Logout</b-button>
-      <p :key="index" v-for="(value, key, index) in user">
+      <h1 class="title is-1 has-text-primary">This is an about page</h1>
+      <b-button type="is-success" outlined @click="getUser">Get me</b-button>
+      <p
+        class="has-text-centered has-text-secondary is-family-code"
+        :key="index"
+        v-for="(value, key, index) in user"
+      >
         {{ key }}: {{ value }}
       </p>
+      <b-button @click="logout">Logout</b-button>
     </div>
   </div>
 </template>
@@ -23,8 +27,6 @@ export default Vue.extend({
     };
   },
   async created() {
-    this.getUser();
-    this.getUser();
     await this.getUser();
   },
   methods: {
