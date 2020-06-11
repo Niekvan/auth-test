@@ -18,6 +18,9 @@ $secondary-invert: findColorInvert($secondary);
 $secondary-dark: map-get($custom-colors, 'secondary-dark');
 $secondary-dark-invert: findColorInvert($secondary-dark);
 
+$tertiary: map-get($custom-colors, 'tertiary');
+$tertiary-inverse: findColorInvert($tertiary);
+
 $info: map-get($custom-colors, 'info');
 $info-invert: findColorInvert($info);
 
@@ -32,8 +35,12 @@ $danger-invert: findColorInvert($danger);
 
 // SHADES
 $grey: map-get($custom-colors, 'canvas');
-$grey-dark: map-get($custom-colors, 'canvas-dark');
+$grey-dark: map-get($custom-colors, 'text');
 
 // LINKS
-$link: $primary;
+$link: $tertiary;
+$link-inverse: $tertiary-inverse;
 $link-focus-border: $primary;
+
+//FONTS
+$family-primary: 'Work Sans', sans-serif;

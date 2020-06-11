@@ -1,12 +1,21 @@
 @import 'colors';
+@import '../fonts';
 @import 'variables';
+@import 'transitions';
 @import 'bulma';
 
 html {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $primary-invert;
   background: $grey;
   overflow: auto;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
 }

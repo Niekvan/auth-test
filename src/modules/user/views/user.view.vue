@@ -2,14 +2,14 @@
   <div class="container is-centered">
     <div class="about box">
       <h1 class="title is-1 has-text-primary">This is an about page</h1>
-      <b-button type="is-success" outlined @click="getUser">Get me</b-button>
       <p
-        class="has-text-centered has-text-secondary is-family-code"
+        class="is-family-code"
         :key="index"
         v-for="(value, key, index) in user"
       >
         {{ key }}: {{ value }}
       </p>
+      <b-button type="is-success" outlined @click="getUser">Get me</b-button>
       <b-button @click="logout">Logout</b-button>
     </div>
   </div>

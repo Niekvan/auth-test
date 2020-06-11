@@ -1,14 +1,19 @@
 $custom-colors: (
-  primary: hsl(18, 80%, 68%),
-  primary-light: hsl(18, 80%, 76%),
-  primary-dark: hsl(18, 80%, 60%),
-  primary-darker: hsl(18, 80%, 52%),
-  secondary: hsl(225, 41%, 36%),
-  secondary-dark: hsl(224, 41%, 24%),
+  primary: hsl(217, 100%, 50%),
+  primary-light: hsl(217, 100%, 65%),
+  primary-lighter: hsl(217, 100%, 80%),
+  primary-dark: hsl(217, 100%, 35%),
+  primary-darker: hsl(217, 100%, 20%),
+  secondary: hsl(25, 100%, 55%),
+  secondary-dark: hsl(25, 100%, 40%),
+  tertiary: hsl(249, 100%, 53%),
+  tertiary-dark: hsl(249, 100%, 40%),
+  tertiary-light: hsl(249, 100%, 65%),
   canvas: hsl(200, 20%, 97%),
   canvas-dark: hsl(0, 0%, 68%),
-  info: hsl(224, 41%, 44%),
+  info: hsl(217, 100%, 50%),
   success: hsl(98, 52%, 60%),
-  warning: hsl(24, 99%, 59%),
-  danger: hsl(355, 78%, 60%)
+  warning: hsl(52, 100%, 55%),
+  danger: hsl(355, 78%, 60%),
+  text: hsl(217, 100%, 10%)
 );

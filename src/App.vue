@@ -9,7 +9,7 @@
 import Vue from 'vue';
 import { mapState } from 'vuex';
 
-import SplashScreen from '@/modules/main/views/SplashView.vue';
+import SplashScreen from '@/modules/main/views/splash.view.vue';
 
 export default Vue.extend({
   components: {

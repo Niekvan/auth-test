@@ -1,7 +1,15 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 
-import HomeView from '@/modules/main/views/HomeView.vue';
+import login from '@/modules/main/views/login.view.vue';
+import homeView from '@/modules/main/views/home.view.vue';
+import notFound from '@/modules/main/views/not_found.view.vue';
+
+import bookings from '@/modules/bookings/views/bookings.view.vue';
+
+import dashboard from '@/modules/dashboard/views/dashboard.view.vue';
+
+import user from '@/modules/user/views/user.view.vue';
 
 import ApiService from '@/services/api.service';
 
@@ -12,34 +20,40 @@ const routes: Array<RouteConfig> = [
     path: '',
     name: 'Home',
     redirect: '/dashboard',
-    component: HomeView,
+    component: homeView,
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ '@/modules/overview/views/Dashboard.vue'
-          )
+        component: dashboard
       },
       {
-        path: 'about',
-        name: 'About',
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ '@/modules/user/views/About.vue'
-          )
+        path: 'profile',
+        name: 'Profile',
+        component: user
+      },
+      {
+        path: 'bookings',
+        name: 'Bookings',
+        component: bookings
       }
     ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: () =>
-      import(/* webpackChunckName: "login" */ '@/modules/main/views/Login.vue'),
+    component: login,
     meta: {
       public: true
     }
+  },
+  {
+    path: '/404',
+    component: notFound
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ];
 

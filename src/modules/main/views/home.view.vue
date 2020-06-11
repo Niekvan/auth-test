@@ -1,8 +1,8 @@
 <template>
-  <div class="container wrapper">
+  <div class="wrapper">
     <navigation class="navigation"></navigation>
     <main class="content">
-      <transition name="fade" mode="out-in">
+      <transition name="slide-fade" mode="out-in">
         <router-view></router-view>
       </transition>
     </main>
@@ -25,12 +25,9 @@ export default {
   display: flex;
   height: 100vh;
 
-  .navigation {
-    margin-right: 1rem;
-  }
-
   .content {
     flex-grow: 1;
+    padding: 1em;
   }
 }
 </style>
