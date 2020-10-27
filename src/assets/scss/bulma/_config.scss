@@ -33,9 +33,11 @@ $warning-invert: findColorInvert($warning);
 $danger: map-get($custom-colors, 'danger');
 $danger-invert: findColorInvert($danger);
 
+$text: map-get($custom-colors, 'text');
+
 // SHADES
 $grey: map-get($custom-colors, 'canvas');
-$grey-dark: map-get($custom-colors, 'text');
+$grey-dark: map-get($custom-colors, 'canvas-dark');
 
 // LINKS
 $link: $tertiary;
