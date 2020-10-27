@@ -1,15 +1,15 @@
 export const Actions = {
   LOGIN: '😇 LOGIN',
-  LOGOUT: '🙍 LOGOUT'
+  LOGOUT: '🙍 LOGOUT',
 };
 
 export const Mutation = {
   LOGIN: '😇 LOGIN',
-  LOGOUT: '🙍 LOGOUT'
+  LOGOUT: '🙍 LOGOUT',
 };
 
 export const Getters = {
-  isAuthenticated: 'isAuthenticated'
+  isAuthenticated: 'isAuthenticated',
 };
 
 export interface User {

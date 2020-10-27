@@ -2,7 +2,7 @@ import axios, {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
-  AxiosError
+  AxiosError,
 } from 'axios';
 import TokenStorage from './storage.service';
 import { Token, ApiConfig } from './types';
@@ -25,11 +25,11 @@ export class AuthService {
 
   constructor() {
     this.initialized = new Promise(
-      resolve => (this._resolveInitialized = resolve)
+      (resolve) => (this._resolveInitialized = resolve)
     );
   }
 
-  public init(config: ApiConfig) {
+  public init(config: ApiConfig): void {
     this._api = axios.create(config.instance);
     this._onLogout = config.onLogout;
     this._tokenStorage = new TokenStorage();
@@ -53,8 +53,8 @@ export class AuthService {
         method: 'post',
         data: {
           email,
-          password
-        }
+          password,
+        },
       });
 
       this._setToken(token);
@@ -85,8 +85,8 @@ export class AuthService {
       url: '/o/token',
       method: 'post',
       data: {
-        refreshToken: this._token.refreshToken
-      }
+        refreshToken: this._token.refreshToken,
+      },
     };
 
     try {
@@ -130,7 +130,7 @@ export class AuthService {
         return this.request({
           method: error.config.method,
           url: error.config.url,
-          data: error.config.data
+          data: error.config.data,
         });
       });
     }
@@ -144,7 +144,7 @@ export class AuthService {
       return await this.request({
         method: error.config.method,
         url: error.config.url,
-        data: error.config.data
+        data: error.config.data,
       });
     } catch (e) {
       this._processQueue(error, null);
@@ -156,7 +156,7 @@ export class AuthService {
 
   private _mount401Interceptor() {
     this._interceptorID = this._api.interceptors.response.use(
-      response => response,
+      (response) => response,
       this._intercept401
     );
   }
@@ -168,7 +168,7 @@ export class AuthService {
   }
 
   private _processQueue(error: AxiosError | null, token: string | null) {
-    this._queue.forEach(promise => {
+    this._queue.forEach((promise) => {
       if (error) {
         promise.reject(error);
       } else {

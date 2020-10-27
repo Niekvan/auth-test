@@ -25,54 +25,54 @@ const routes: Array<RouteConfig> = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: dashboard
+        component: dashboard,
       },
       {
         path: 'profile',
         name: 'Profile',
-        component: user
+        component: user,
       },
       {
         path: 'bookings',
         name: 'Bookings',
-        component: bookings
-      }
-    ]
+        component: bookings,
+      },
+    ],
   },
   {
     path: '/login',
     name: 'Login',
     component: login,
     meta: {
-      public: true
-    }
+      public: true,
+    },
   },
   {
     path: '/404',
-    component: notFound
+    component: notFound,
   },
   {
     path: '*',
-    redirect: '/404'
-  }
+    redirect: '/404',
+  },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 router.beforeEach(async (to, from, next) => {
   await ApiService.initialized;
 
-  const isPublic = to.matched.some(record => record.meta.public);
+  const isPublic = to.matched.some((record) => record.meta.public);
   const loggedIn = ApiService.isLoggedIn;
 
   if (!isPublic && !loggedIn) {
     return next({
       name: 'Login',
-      query: { redirect: to.fullPath }
+      query: { redirect: to.fullPath },
     });
   }
   next();

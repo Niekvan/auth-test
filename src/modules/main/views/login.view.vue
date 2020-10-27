@@ -26,26 +26,28 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
     return {
       user: {
         email: 'test@test.com',
-        password: 'password'
-      }
+        password: 'password',
+      },
     };
   },
   methods: {
     ...mapActions({
-      login: 'auth/login'
+      login: 'auth/login',
     }),
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async sendForm() {
       try {
         await this.login(this.user);
       } catch (e) {
         console.error(e);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

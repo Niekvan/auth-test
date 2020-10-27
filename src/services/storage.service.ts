@@ -4,7 +4,7 @@ export default class TokenService {
   TOKEN_KEY = 'token';
   REFRESH_TOKEN_KEY = 'refresh_token';
 
-  public getToken() {
+  public getToken(): Token | null {
     const jsonToken = localStorage.getItem(this.TOKEN_KEY);
     try {
       if (jsonToken) {

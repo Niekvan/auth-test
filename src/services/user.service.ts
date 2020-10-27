@@ -18,7 +18,7 @@ class UserService {
     try {
       const { data: user } = await ApiService.get({
         module: this._config.shortName,
-        path: 'me'
+        path: 'me',
       });
 
       return user;

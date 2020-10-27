@@ -13,11 +13,11 @@ import SplashScreen from '@/modules/main/views/splash.view.vue';
 
 export default Vue.extend({
   components: {
-    'splash-screen': SplashScreen
+    'splash-screen': SplashScreen,
   },
   computed: {
-    ...mapState(['isLoading'])
-  }
+    ...mapState(['isLoading']),
+  },
 });
 </script>
 

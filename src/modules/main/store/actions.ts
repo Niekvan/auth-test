@@ -18,7 +18,7 @@ export const actions: ActionTree<State, any> = {
       instance: apiConfig,
       onLogout: () => {
         router.push({ name: 'Login' });
-      }
+      },
     };
 
     ApiService.init(config);
@@ -42,10 +42,10 @@ export const actions: ActionTree<State, any> = {
     if (!isPublic && !userService.isLoggedIn) {
       router.push({
         name: 'Login',
-        query: { redirect: router.currentRoute.fullPath }
+        query: { redirect: router.currentRoute.fullPath },
       });
     }
 
     commit(SET_LOADING, false);
-  }
+  },
 };

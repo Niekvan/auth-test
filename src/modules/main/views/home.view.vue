@@ -15,8 +15,8 @@ import Navigation from '../components/navigation.vue';
 export default {
   name: 'HomeView',
   components: {
-    Navigation
-  }
+    Navigation,
+  },
 };
 </script>
 

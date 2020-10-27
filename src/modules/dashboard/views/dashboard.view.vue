@@ -14,15 +14,17 @@ import lineChart from '../components/apex_chart';
 export default {
   name: 'Dashboard',
   components: {
-    lineChart
+    lineChart,
   },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
     return {
       loading: false,
       chart: null,
-      users: null
+      users: null,
     };
   },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async mounted() {
     try {
       this.loading = true;
@@ -34,19 +36,19 @@ export default {
         series: [
           {
             name: 'sales',
-            data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
-          }
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+          },
         ],
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-        }
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+        },
       };
     } catch (e) {
       console.log(e);
     } finally {
       this.loading = false;
     }
-  }
+  },
 };
 </script>
 

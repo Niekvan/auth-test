@@ -2,9 +2,7 @@
   <div class="not-found">
     <img class="not-found__image" src="@/assets/404.svg" alt="" />
     <div class="not-found__text">
-      <h1 class="title is-1">
-        Oops this page doesn't seem to exist
-      </h1>
+      <h1 class="title is-1">Oops this page doesn't seem to exist</h1>
       <router-link to="/" class="is-size-2"
         ><b-icon icon="arrow-left" size="is-medium"></b-icon>Back to
         safety</router-link
@@ -15,7 +13,7 @@
 
 <script>
 export default {
-  name: 'NotFound'
+  name: 'NotFound',
 };
 </script>
 

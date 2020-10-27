@@ -21,5 +21,5 @@ export const actions: ActionTree<any, any> = {
     await apiService.logout();
     commit(Mutation.LOGOUT);
     router.push({ name: 'Login' });
-  }
+  },
 };

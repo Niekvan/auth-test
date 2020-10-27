@@ -23,7 +23,7 @@ import UserService from '@/services/user.service';
 export default Vue.extend({
   data() {
     return {
-      user: null
+      user: null,
     };
   },
   async created() {
@@ -31,14 +31,14 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions({
-      logout: 'auth/logout'
+      logout: 'auth/logout',
     }),
     async getUser() {
       const data = await UserService.me();
       if (data) {
         this.user = data.user;
       }
-    }
-  }
+    },
+  },
 });
 </script>

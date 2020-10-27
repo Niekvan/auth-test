@@ -10,7 +10,7 @@ export class ApiService extends AuthService {
   public get(config: ModulePath): Promise<AxiosResponse> {
     const requestData: AxiosRequestConfig = {
       url: this.createURL(config),
-      method: 'get'
+      method: 'get',
     };
     return this.request(requestData);
   }
@@ -19,7 +19,7 @@ export class ApiService extends AuthService {
     const requestData: AxiosRequestConfig = {
       url: this.createURL(config),
       method: 'post',
-      data
+      data,
     };
     return this.request(requestData);
   }
@@ -28,7 +28,7 @@ export class ApiService extends AuthService {
     const requestData: AxiosRequestConfig = {
       url: this.createURL(config),
       method: 'put',
-      data
+      data,
     };
     return this.request(requestData);
   }
@@ -36,7 +36,7 @@ export class ApiService extends AuthService {
   public delete(config: ModulePath): Promise<AxiosResponse> {
     const requestData: AxiosRequestConfig = {
       url: this.createURL(config),
-      method: 'delete'
+      method: 'delete',
     };
     return this.request(requestData);
   }

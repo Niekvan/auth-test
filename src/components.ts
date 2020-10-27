@@ -9,7 +9,7 @@ const customIconConfig = {
       default: '',
       'is-small': 'is-small',
       'is-medium': 'is-medium',
-      'is-large': 'is-large'
+      'is-large': 'is-large',
     },
     iconPrefix: 'uil-',
     internalIcons: {
@@ -25,14 +25,14 @@ const customIconConfig = {
       eye: 'eye',
       'eye-off': 'eye-slash',
       'menu-down': 'angle-down',
-      'menu-up': 'angle-up'
-    }
-  }
+      'menu-up': 'angle-up',
+    },
+  },
 };
 
 Vue.use(Buefy, {
   defaultIconPack: 'unicons',
-  customIconPacks: customIconConfig
+  customIconPacks: customIconConfig,
 });
 
 Vue.component('loader', loader);
