@@ -11,7 +11,7 @@
     "@iconscout/unicons": "^3.0.3",
     "@mdi/font": "^5.8.55",
     "apexcharts": "^3.22.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "buefy": "^0.9.3",
     "core-js": "^3.6.4",
     "vue": "^2.6.12",
